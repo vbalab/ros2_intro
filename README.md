@@ -11,7 +11,12 @@ docker run -p 6080:80 --shm-size=512m \
 ```
 
 - Enter: `http://127.0.0.1:6080` in browser
-- Connect to container in VSCode
+
+- Connect to container in VSCode and create `.env` file with contents:
+
+    ```env
+    PYTHONPATH=/opt/ros/jazzy/lib/python3.12/site-packages
+    ```
 
 All of the following bash commands need to be executed in container's terminal.
 
