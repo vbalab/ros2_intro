@@ -136,6 +136,9 @@ string message
 Edit `~/ws/src/turtle_interfaces/CMakeLists.txt`:
 
 ```cmake
+cmake_minimum_required(VERSION 3.8)
+project(turtle_interfaces)
+
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
@@ -150,18 +153,31 @@ ament_package()
 Edit `~/ws/src/turtle_interfaces/package.xml`:
 
 ```xml
-cmake_minimum_required(VERSION 3.8)
-project(turtle_interfaces)
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>turtle_interfaces</name>
+  <version>0.0.0</version>
+  <description>Custom ROS 2 interfaces (services) for turtle control.</description>
 
-find_package(ament_cmake REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
+  <maintainer email="ubuntu@todo.todo">ubuntu</maintainer>
+  <license>Apache-2.0</license>
 
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/GoTo.srv"
-)
+  <!-- Required for rosidl interface packages on Jazzy -->
+  <member_of_group>rosidl_interface_packages</member_of_group>
 
-ament_export_dependencies(rosidl_default_runtime)
-ament_package()
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
+
+  <exec_depend>rosidl_default_runtime</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
 ```
 
 Then
