@@ -1,0 +1,5 @@
+ros2 pkg create --build-type ament_python turtle_mover --dependencies rclpy geometry_msgs std_srvs
+ros2 service call /move_once std_srvs/srv/Trigger {}
+
+ros2 pkg create turtle_interfaces --build-type ament_cmake
+ros2 service call /go_to turtle_interfaces/srv/GoTo "{x: 9.0, y: 9.0}"
